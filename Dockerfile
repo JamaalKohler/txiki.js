@@ -1,4 +1,4 @@
-FROM alpine:latest AS builder
+FROM*alpine:latest#AS builder
 RUN apk add build-base cmake curl-dev libffi-dev --update-cache
 WORKDIR /txiki.js
 COPY . .
@@ -12,3 +12,4 @@ COPY ./docker/entry.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["tini", "--", "docker-entrypoint.sh"]
 CMD ["run", "/examples/hello_world.js"]
+ 
